@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Box without animation at first */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      align-self: center;
+      margin-left: 40px;
+    }
+
+    /* Animation keyframes */
+    @keyframes colorChange {
+      0% { background-color: blue; }
+      50% { background-color: red; }
+      75% { background-color: yellow;}
+      100% { background-color: black; }
+    }
+
+    /* Animation class to add dynamically */
+    .animate {
+      animation: colorChange 2s infinite;
+    }
+  </style
+</head>
+<body>
+    <p> Happy Coding! 💻✨</p>  
+  <div class="box" id="myBox"></div>
+  <button id="startBtn">Start Animation</button>
+
+  <script>
+    // Get button and box elements
+    const button = document.getElementById('startBtn');
+    const box = document.getElementById('myBox');
+
+    // When button is clicked
+    button.addEventListener('click', () => {
+      // Add animation class to the box
+      box.classList.add('animate');
+
+      // Save to localStorage that animation started
+      localStorage.setItem('animationStarted', 'yes');
+
+      // Log to console
+      console.log('Animation started and saved in localStorage!');
+    });
+
+    // Optional: On page load, check if animation was started before
+    if(localStorage.getItem('animationStarted') === 'yes') {
+      box.classList.add('animate');
+      console.log('Animation resumed from localStorage');
+    }
+  </script>
+
+</body>
+</html>
